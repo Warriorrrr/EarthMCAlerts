@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "earthmc-alerts",
+  "version": "${version}",
+
+  "name": "EarthMC Alerts",
+  "description": "Plays a sound when you need to move your fishing bobber, or go afk.",
+  "authors": [
+    "Warriorrr"
+  ],
+  "contact": {
+    "homepage": "https://github.com/Warriorrrr/earthmc-alerts",
+    "issues": "https://github.com/Warriorrrr/earthmc-alerts/issues"
+  },
+
+  "icon": "assets/earthmcalerts/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "dev.warriorrr.earthmcalerts.EarthMCAlerts"
+    ],
+    "modmenu": [
+      "dev.warriorrr.earthmcalerts.ConfigUtils"
+    ]
+  },
+  "mixins": [
+    "earthmcalerts.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.7.4",
+    "fabric": "*",
+    "minecraft": "1.16.x"
+  },
+  "custom": {
+    "modmenu:clientsideOnly": true
+  }
+}

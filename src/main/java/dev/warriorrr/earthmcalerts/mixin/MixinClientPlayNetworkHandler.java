@@ -11,6 +11,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import dev.warriorrr.earthmcalerts.EarthMCAlerts;
+import static dev.warriorrr.earthmcalerts.EarthMCAlerts.config;
 
 @Mixin(ClientPlayNetworkHandler.class)
 public class MixinClientPlayNetworkHandler {
@@ -19,7 +20,7 @@ public class MixinClientPlayNetworkHandler {
 
 	@Inject(method = "onGameMessage", at = @At("HEAD"))
 	public void onChatMessage(GameMessageS2CPacket packet, CallbackInfo info) {
-		if (client.isOnThread()) {
+		if (client.isOnThread() && config.enabled) {
 			EarthMCAlerts.handleChat(packet);
 		}
 	}

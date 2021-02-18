@@ -28,10 +28,10 @@ public class EarthMCAlerts implements ModInitializer {
     public static void handleChat(GameMessageS2CPacket packet) {
         MinecraftClient client = MinecraftClient.getInstance();
 
-        if (isOverfishingMessage(ChatUtil.stripTextFormat(packet.getMessage().getString()))) {
+        if (isOverfishingMessage(ChatUtil.stripTextFormat(packet.getMessage().getString())) && config.enableOverfishingSound) {
             for (int i = 0; i < 3; i++)
                 client.player.playSound(SoundEvents.ITEM_BUCKET_EMPTY_FISH, 100.0F, 1.0F);
-        } else if (isAfk(ChatUtil.stripTextFormat(packet.getMessage().getString()))) {
+        } else if (isAfk(ChatUtil.stripTextFormat(packet.getMessage().getString())) && config.enableAfkSound) {
             for (int i = 0; i < 3; i++)
                 client.player.playSound(SoundEvents.BLOCK_BELL_USE, 1.100F, 1.0F);
         }
